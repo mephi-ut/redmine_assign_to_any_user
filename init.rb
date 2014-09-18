@@ -13,7 +13,7 @@ Redmine::Plugin.register :redmine_assign_to_any_user do
 
 	project_module :assign_to_any_user do
 		permission :project_autocomplete_for_user, {:projects => [:autocomplete_for_user]}, :public => true, :read => true
-		permission :issues_autocomplete_for_user, {:issues => [:autocomplete_for_user]}, :public => true, :read => true
+		permission :issue_autocomplete_for_user,   {:issues   => [:autocomplete_for_user]}, :public => true, :read => true
 	end
 end
 

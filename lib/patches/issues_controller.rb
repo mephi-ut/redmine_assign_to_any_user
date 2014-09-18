@@ -4,8 +4,8 @@ module AssignToAnyUser
 			base.send(:include, InstanceMethods)
 
 			base.class_eval do
+				before_filter :authorize, :except => [:index, :autocomplete_for_user]
 				unloadable
-				before_filter :find_issue, :only => [:show, :edit, :update, :autocomplete_for_user]
 
 				def autocomplete_for_user
 					if params[:q].length > 0

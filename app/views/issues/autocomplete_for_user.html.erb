@@ -1,0 +1,4 @@
+<option></option>
+<%= principals_options_for_select @users, @issue.nil? ? nil : @issue.assigned_to %>
+<%= javascript_tag "$('#issue_assigned_to_id').attr('size', #{[10, (@users.size+1)].min});" %>
+<%= javascript_tag '$("#issue_assigned_to_id").on("click", function() { $("#issue_assigned_to_id").attr("size", 1); });' %>

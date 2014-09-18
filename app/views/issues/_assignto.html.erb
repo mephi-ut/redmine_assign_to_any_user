@@ -1,26 +1,26 @@
-<p id='assignie_search_p'>
-  <%= text_field_tag 'assignie_search', nil %>
-  <a href="#cancel" onClick='$("#assignie_search").val(""); $("#issue_assigned_to_id").html($("#issue_assigned_to_id_dup").html()); $("#issue_assigned_to_id").attr("size", 1); return false;'>Отменить</a><br>
+<p id='assignee_search_p'>
+  <%= text_field_tag 'assignee_search', nil %>
+  <a href="#cancel" onClick='$("#assignee_search").val(""); $("#issue_assigned_to_id").html($("#issue_assigned_to_id_dup").html()); $("#issue_assigned_to_id").attr("size", 1); return false;'>Отменить</a><br>
   <select style='display: none;' id="issue_assigned_to_id_dup" disabled><option></option><%= principals_options_for_select(issue.assignable_users, issue.assigned_to) %></select>
 </p>
 
 <script type='text/javascript'>
-	function anyassignie_swap_inputs() {
+	function anyassignee_swap_inputs() {
 		var offset_top = $('#issue_assigned_to_id').offset().top;
-		var width      = $('#assignie_search_p').width();
-		$("#assignie_search_p").css({ top: offset_top-8, position: 'absolute' });
+		var width      = $('#assignee_search_p').width();
+		$("#assignee_search_p").css({ top: offset_top-8, position: 'absolute' });
 		$("#issue_assigned_to_id").css({ 'margin-top':  '26px', position: 'relative', 'width': width });
 		$("#issue_assigned_to_id").parent().width(width)
 	}
 
 	if ($('.icon-edit').length == 0) {
-		anyassignie_swap_inputs();
+		anyassignee_swap_inputs();
 	} else {
-		$('.icon-edit').on('click', anyassignie_swap_inputs);
+		$('.icon-edit').on('click', anyassignee_swap_inputs);
 	}
 </script>
 
-<%= javascript_tag "observeSearchfield('assignie_search', 'issue_assigned_to_id',
+<%= javascript_tag "observeSearchfield('assignee_search', 'issue_assigned_to_id',
 	'#{
 		escape_javascript url_for(
 			:controller 	=> @issue.id.nil? ? 'projects'  : 'issues',

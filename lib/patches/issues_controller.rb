@@ -12,7 +12,8 @@ module AssignToAnyUser
 						@users = User.active.sorted.like(params[:q]).limit(100).all
 						render :layout => false
 					else
-						render :nothing => true, :status => 200, :content_type => 'text/html'
+						#render :nothing => true, :status => 200, :content_type => 'text/html'
+						render_403
 					end
 				end
 			end

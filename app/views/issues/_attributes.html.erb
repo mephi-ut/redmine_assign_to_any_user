@@ -14,11 +14,11 @@
 <p><%= f.select :priority_id, (@priorities.collect {|p| [p.name, p.id]}), {:required => true}, :disabled => !@issue.leaf? %></p>
 <% end %>
 
-<% if @issue.safe_attribute? 'assigned_to_id' %>
-<p><%= f.select :assigned_to_id, principals_options_for_select(@issue.assignable_users, @issue.assigned_to), :include_blank => true, :required => @issue.required_attribute?('assigned_to_id') %></p>
-<% end %>
 <% if @project.module_enabled?(:assign_to_any_user) %>
 	<%= render :partial => 'issues/assignto', :locals => {:issue => @issue, :project => @project} %>
+<% end %>
+<% if @issue.safe_attribute? 'assigned_to_id' %>
+<p><%= f.select :assigned_to_id, principals_options_for_select(@issue.assignable_users, @issue.assigned_to), :include_blank => true, :required => @issue.required_attribute?('assigned_to_id') %></p>
 <% end %>
 
 <% if @issue.safe_attribute?('category_id') && @issue.project.issue_categories.any? %>

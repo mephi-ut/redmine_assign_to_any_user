@@ -24,9 +24,8 @@
 <%= javascript_tag "observeSearchfield('assignee_search', 'issue_assigned_to_id',
 	'#{
 		escape_javascript url_for(
-			:controller 	=> @issue.id.nil? ? 'projects'  : 'issues',
-			:action 	=> "extended_fields_autocomplete_for_user",
-			:id		=> @issue.id.nil? ? @project.identifier : @issue.id,
+			:controller 	=> 'usersearchfield',
+			:action 	=> "autocomplete_for_user",
 			:field_id	=> 'issue_assigned_to_id',
 			:selected	=> @issue.nil? ? nil : ( @issue.assigned_to.nil? ? nil : @issue.assigned_to )
 		)
